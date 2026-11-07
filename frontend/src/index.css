@@ -1,0 +1,354 @@
+/* =====================================
+   FONTS & TAILWIND
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+
+/* =====================================
+   GLOBAL DESIGN VARIABLES
+===================================== */
+
+:root {
+  --text: #334155;
+  --text-h: #0f172a;
+  --bg: #f9f6ef;
+
+  --border: #e2e8f0;
+  --code-bg: #f4f3ec;
+
+  --accent: #fe0100;
+  --accent-bg: rgba(254, 1, 0, 0.08);
+  --accent-border: rgba(254, 1, 0, 0.3);
+
+  --social-bg: rgba(244, 243, 236, 0.5);
+
+  --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+  --heading: "Manrope", system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================
+   TYPOGRAPHY
+   IMPORTANT:
+   :where() has zero specificity.
+   Tailwind text color utilities will
+   correctly override inherited colors.
+===================================== */
+
+:where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font-family: var(--heading);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+:where(h1) {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+:where(h2) {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+:where(h3) {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.3;
+}
+
+:where(h4) {
+  font-size: 1.125rem;
+}
+
+:where(p) {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+
+/* =====================================
+   LINKS
+===================================== */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =====================================
+   BUTTONS & FORM ELEMENTS
+===================================== */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+
+/* =====================================
+   CODE
+===================================== */
+
+code,
+pre {
+  font-family: var(--mono);
+}
+
+code {
+  display: inline-flex;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+/* =====================================
+   TEXT SELECTION
+===================================== */
+
+::selection {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes waveFast {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes waveSlow {
+  from {
+    transform: translateX(-25%);
+  }
+
+  to {
+    transform: translateX(-75%);
+  }
+}
+
+.animate-waveFast {
+  animation: waveFast 8s linear infinite;
+}
+
+.animate-waveSlow {
+  animation: waveSlow 14s linear infinite;
+}
+
+
+/* =====================================
+   MARQUEE ANIMATION
+===================================== */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+
+/* =====================================
+   SWIPER
+===================================== */
+
+.tools-swiper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.tools-swiper .swiper-slide {
+  transition: all 0.4s ease;
+  opacity: 0.5;
+}
+
+.tools-swiper .swiper-slide-active {
+  opacity: 1;
+}
+
+.tools-swiper .swiper-slide-prev,
+.tools-swiper .swiper-slide-next {
+  opacity: 0.8;
+}
+
+
+/* =====================================
+   FLICKITY
+===================================== */
+
+.gallery-carousel .flickity-viewport {
+  overflow: visible;
+}
+
+.gallery-carousel .flickity-slider {
+  display: flex;
+  align-items: center;
+}
+
+.gallery-cell {
+  transition: transform 0.6s ease;
+}
+
+.gallery-cell.is-selected {
+  z-index: 20;
+}
+
+
+/* =====================================
+   FOCUS ACCESSIBILITY
+===================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+
+/* =====================================
+   IMAGE DEFAULTS
+===================================== */
+
+img {
+  max-width: 100%;
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 15px;
+  }
+
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+}
+
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
